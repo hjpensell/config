@@ -1,0 +1,35 @@
+:t modify
+:t ($)
+:t \a->1
+:t 
+:t $
+:t (.)
+mconcat . map First $ [Nothing, Just 9, Just 10]
+mconcat . map first $ [Nothing, Just 9, Just 10]
+map First [Nothing, Just 9, Just 10]
+map First $ [Nothing, Just 9, Just 10]
+import Data.Monoid 
+import
+map First $ [Nothing, Just 9, Just 10]
+:t ($)
+:t $
+:!clear
+clc
+clear
+:t fmap (++) (Just "hey")
+import Prelude
+import prelude
+import
+:t (+)
+:t +
+:t fmap (+) (Just "hey")
+"h" ++ "hu"
+1++
+++
+:t fmap (++) (Just "hey")
+:t fmap (++) (Just "hey")
+Just 3 * Just 1
+:t (*)
+:t *
+clear
+\
