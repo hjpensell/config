@@ -32,6 +32,7 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-tree/nvim-tree.lua' },
 	{ src = 'https://github.com/nvim-tree/nvim-web-devicons' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+	{ src = 'https://github.com/lervag/vimtex.git' },
 })
 
 -- Plugin configs.
@@ -46,6 +47,12 @@ require("blink.cmp").setup({
 require("onedark").setup({
 	style = 'warmer'
 })
+vim.g.vimtex_compiler_method = 'latexmk'
+vim.g.vimtex_view_method = 'general'
+vim.g.vimtex_view_general_viewer = '/mnt/c/Users/hjpen/AppData/Local/SumatraPDF/SumatraPDF.exe'
+vim.g.vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+vim.g.vimtex_view_general_options_latexmk = '-reuse-instance'
+vim.g.vimtex_complete_enabled = 0
 
 -- Plugin keymaps.
 vim.lsp.enable({ "lua_ls", "texlab" })
