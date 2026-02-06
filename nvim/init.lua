@@ -18,8 +18,8 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Window left" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window right" })
-vim.keymap.set({'n', 'v'}, '<leader>y', '"+y')
-vim.keymap.set({'n', 'v'}, '<leader>p', '"+p')
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p')
 
 -- List of plugins.
 vim.pack.add({
@@ -33,10 +33,12 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-tree/nvim-web-devicons' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/lervag/vimtex.git' },
+	{ src = 'https://github.com/mason-org/mason.nvim' },
 })
 
 -- Plugin configs.
 require "mini.pick".setup()
+require "mason".setup()
 require "nvim-tree".setup()
 require "oil".setup()
 require("blink.cmp").setup({
