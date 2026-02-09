@@ -34,17 +34,30 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/lervag/vimtex.git' },
 	{ src = 'https://github.com/mason-org/mason.nvim' },
+	{ src = 'https://github.com/L3MON4D3/LuaSnip' },
+	{ src = 'https://github.com/windwp/nvim-autopairs' },
 })
 
 -- Plugin configs.
+local ls = require("luasnip")
 require "mini.pick".setup()
+require "nvim-autopairs".setup()
 require "mason".setup()
 require "nvim-tree".setup()
 require "oil".setup()
 require("blink.cmp").setup({
 	sources = {
-		default = { "lsp", "path", "snippets", "buffer" },
+		default = { "lsp", "path", "snippets", "buffer", },
 	},
+	snippets = { preset = 'luasnip' },
+	keymap = {
+			preset = "default",
+			["<Tab>"] = { "snippet_forward", "fallback" },
+			["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+	}
+
+
 })
 require("onedark").setup({
 	style = 'warmer'
@@ -54,7 +67,20 @@ vim.g.vimtex_view_method = 'general'
 vim.g.vimtex_view_general_viewer = '/mnt/c/Users/hjpen/AppData/Local/SumatraPDF/SumatraPDF.exe'
 vim.g.vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
 vim.g.vimtex_view_general_options_latexmk = '-reuse-instance'
-vim.g.vimtex_complete_enabled = 0
+ls.config.set_config({
+	history = true,
+	updateevents = "TextChanged,TextChangedI",
+	enable_autosnippets = true,
+})
+require("luasnip.loaders.from_lua").lazy_load()
+require("luasnip.loaders.from_lua").load({
+		paths = {vim.fn.stdpath("config") .. "/lua/luasnip"}
+})
+local npairs = require("nvim-autopairs")
+local Rule = require("nvim-autopairs.rule")
+npairs.add_rule(
+		Rule("$", "$", "tex")
+)
 
 -- Plugin keymaps.
 vim.lsp.enable({ "lua_ls", "texlab" })

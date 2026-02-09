@@ -1,8 +1,16 @@
 {
   "plugins": {
+    "LuaSnip": {
+      "rev": "dae4f5aaa3574bd0c2b9dd20fb9542a02c10471c",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
     "blink.cmp": {
       "rev": "22cbfef275b6f76c6c55e9ef9ed8bb8b6f8bb894",
       "src": "https://github.com/saghen/blink.cmp"
+    },
+    "luasnip-latex-snippets.nvim": {
+      "rev": "53d96674d56f8489288e8db9b24c381d422e16a5",
+      "src": "https://github.com/evesdropper/luasnip-latex-snippets.nvim"
     },
     "mason.nvim": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
@@ -11,6 +19,10 @@
     "mini.pick": {
       "rev": "7c0a674f620ddc701903b887b2dade836b23ea79",
       "src": "https://github.com/echasnovski/mini.pick"
+    },
+    "nvim-autopairs": {
+      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-lspconfig": {
       "rev": "3f58aeca0c6ece8a9fb8782ea3fcb6024f285be3",
