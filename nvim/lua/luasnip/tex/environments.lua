@@ -61,4 +61,14 @@ return {
 		),
 		{ condition = in_align }
 	),
+
+-- Inline Math: Type 'm' followed by Tab (or your snippet trigger)
+    s({trig = "m", name = "Inline Math"}, {
+        t("$"), i(1), t("$"),
+    }),
+
+    -- Display Math: Type 'dm' followed by Tab
+    s({trig = "dm", name = "Display Math"}, {
+        t({ "$$", "\t" }), i(1), t({ "", "$$" }),
+    }),
 }

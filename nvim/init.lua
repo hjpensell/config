@@ -66,7 +66,6 @@ vim.g.vimtex_compiler_method = 'latexmk'
 vim.g.vimtex_view_method = 'general'
 vim.g.vimtex_view_general_viewer = '/mnt/c/Users/hjpen/AppData/Local/SumatraPDF/SumatraPDF.exe'
 vim.g.vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
-vim.g.vimtex_view_general_options_latexmk = '-reuse-instance'
 ls.config.set_config({
 	history = true,
 	updateevents = "TextChanged,TextChangedI",
@@ -76,17 +75,33 @@ require("luasnip.loaders.from_lua").lazy_load()
 require("luasnip.loaders.from_lua").load({
 		paths = {vim.fn.stdpath("config") .. "/lua/luasnip"}
 })
-local npairs = require("nvim-autopairs")
-local Rule = require("nvim-autopairs.rule")
-npairs.add_rule(
-		Rule("$", "$", "tex")
-)
 
 -- Plugin keymaps.
-vim.lsp.enable({ "lua_ls", "texlab" })
+vim.lsp.enable({ "lua_ls", "texlab", "pyright" })
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>f', ':Pick files<CR>')
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
 vim.keymap.set('n', '<leader>pv', ':NvimTreeFocus<CR>')
 
 vim.cmd("colorscheme onedark")
+
+-- LaTeX file settings:
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tex",
+  callback = function()
+    -- Enable line wrapping
+    vim.opt_local.wrap = true
+    
+    -- Wrap at a character in 'breakat' (usually whitespace) 
+    -- rather than in the middle of a word
+    vim.opt_local.linebreak = true
+    
+    -- Keep indentation on wrapped lines
+    vim.opt_local.breakindent = true
+    
+    -- Optional: Use visual lines for navigation (gj/gk instead of j/k)
+    -- This makes moving through wrapped lines much more intuitive
+    vim.keymap.set('n', 'j', 'gj', { buffer = true })
+    vim.keymap.set('n', 'k', 'gk', { buffer = true })
+  end,
+})

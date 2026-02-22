@@ -54,7 +54,7 @@
     },
     "vimtex": {
       "rev": "f707368022cdb851716be0d2970b90599c84a6a6",
-      "src": "https://github.com/lervag/vimtex"
+      "src": "https://github.com/lervag/vimtex.git"
     }
   }
 }
